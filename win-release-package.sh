@@ -12,8 +12,7 @@ CHANGELOG=nxt-clone-client-${VERSION}.changelog.txt
 OBFUSCATE=$2
 
 FILES="changelogs conf html lib resource contrib logs"
-FILES="${FILES} ${APPLICATION}.exe ${APPLICATION}service.exe"
-FILES="${FILES} 3RD-PARTY-LICENSES.txt AUTHORS.txt LICENSE.txt"
+FILES="${FILES} nxt.cmd 3RD-PARTY-LICENSES.txt AUTHORS.txt LICENSE.txt"
 FILES="${FILES} DEVELOPERS-GUIDE.md OPERATORS-GUIDE.md README.md README.txt USERS-GUIDE.md"
 FILES="${FILES} mint.bat mint.sh run.bat run.sh run-tor.sh run-desktop.sh start.sh stop.sh compact.sh compact.bat sign.sh sign.bat passphraseRecovery.sh passphraseRecovery.bat pem.to.pkcs12.keystore.certbot.hook.sh"
 FILES="${FILES} nxt.policy nxtdesktop.policy Wallet.url Dockerfile"
@@ -44,8 +43,6 @@ echo javadoc
 ./javadoc.sh
 fi
 echo copy resources
-cp installer/lib/JavaExe.exe ${APPLICATION}.exe
-cp installer/lib/JavaExe.exe ${APPLICATION}service.exe
 cp -a ${FILES} ${APPLICATION}
 cp -a logs/placeholder.txt ${APPLICATION}/logs
 echo gzip
@@ -63,7 +60,7 @@ echo generate jar files
 echo package installer Jar
 ../installer/build-installer.sh ../${PACKAGE}
 echo create installer exe
-../installer/build-exe.bat ${PACKAGE}
+../installer/build-exe.sh ${PACKAGE}
 echo create installer zip
 cd -
 zip -q -X -r ${PACKAGE}.zip ${APPLICATION} -x \*/.idea/\* \*/.gitignore \*/.git/\* \*.iml ${APPLICATION}/conf/nxt.properties ${APPLICATION}/conf/logging.properties ${APPLICATION}/conf/localstorage/\*

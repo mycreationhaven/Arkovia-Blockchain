@@ -4,7 +4,7 @@
 	<programGroup defaultName="NXT" location="startMenu"/>
 	<shortcut
 		name="Nxt Server"
-		target="$INSTALL_PATH\nxt.exe"
+		target="$INSTALL_PATH\nxt.cmd"
 		commandLine=""
 		workingDirectory="$INSTALL_PATH"
         description="Start NXT server"

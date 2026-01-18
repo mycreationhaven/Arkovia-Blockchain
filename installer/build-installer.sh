@@ -6,7 +6,7 @@ PATHSEP=";"
 fi
 
 SETUP="setup.xml"
-if [ "$OSTYPE" = "linux-gnu" ] ; then
+if [ "$OSTYPE" = "linux-gnu" ] && [ -z "$WSL_DISTRO_NAME" ] ; then
 SETUP="setup-unix.xml"
 fi
 

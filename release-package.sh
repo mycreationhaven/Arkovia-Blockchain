@@ -45,8 +45,6 @@ echo javadoc
 ./javadoc.sh
 fi
 echo copy resources
-cp installer/lib/JavaExe.exe ${APPLICATION}.exe
-cp installer/lib/JavaExe.exe ${APPLICATION}service.exe
 cp -a ${FILES} ${APPLICATION}
 cp -a logs/placeholder.txt ${APPLICATION}/logs
 echo gzip

@@ -1,3 +1,74 @@
+nxt-client-1.13.1, released 2025-10-30:
+
+As announced at https://www.jelurida.com/news/future-nxt , with this release
+we are implementing the forgers voting for the proposed migration of Nxt
+to a new Ardor child chain on mainnet. The migration signalling and shutdown
+was successfully tested with the previous release on Nxt testnet, which is now
+stopped and not producing new blocks.
+
+All mainnet nodes who support the Nxt migration must upgrade to this release
+before the hardfork scheduled for block 5915915, the "migration signalling
+height" expected around Nov 23, 2025. After this height, nodes forging with
+this release will generate blocks with version 4 (current block version is 3),
+but will also accept as valid blocks with version 3, provided that the
+previous block is not version 4. Nodes who do not upgrade to this release will
+continue to generate version 3 blocks only and refuse to switch to a fork
+containing version 4 blocks, while nodes running this release will consider
+both forks as valid and switch to whichever grows to a better cumulative
+difficulty.
+
+1440 blocks after the migration signalling height, the "migration decision
+height" is reached. After this height, if the last block is version 4, the
+migration decision will be considered approved and at block 6000000, expected
+around Jan 20, 2026, the "snapshot height" is reached, after which no more
+Nxt mainnet blocks will be generated or accepted. Shortly after, we will do an
+Ardor mainnet release which will enable the new Nxt child chain based on a
+snapshot of the Nxt blockchain as of that final height.
+
+The code that will be used to generate the snapshot is included in this
+release under src/java/nxt/addons/ChildChainSnapshot.java so that anyone will
+be able to independently run it and verify the snapshot balances.
+
+This the final of more than 160 Nxt software releases we have done for the
+last 12 years. It has been a long journey. See you over at Ardor!
+
+
+--------------------------------------------------------------------------------
+nxt-client-1.13.0, released 2025-10-13:
+
+This release implements the forgers voting for the proposed migration of Nxt
+to a new Ardor child chain. At this point there is no need for mainnet nodes
+to install it as there are no other changes or bugfixes relative to 1.12.3 and
+in this release the migration is enabled for testnet only.
+
+An Nxt testnet hardfork has been scheduled for block 5700000 (the "migration
+signalling height") expected to occur on Oct 22, 2025. Testnet nodes should
+upgrade before that. After the migration signalling height, nodes forging with
+this release will generate blocks with version 4 (current block version is 3),
+but will also accept as valid blocks with version 3, provided that the
+previous block is not version 4. Nodes who do not upgrade to this release will
+continue to generate version 3 blocks only and refuse to switch to a fork
+containing version 4 blocks, while nodes running this release will consider
+both forks as valid and switch to whichever grows to a better cumulative
+difficulty.
+
+1440 blocks after the migration signalling height, the "migration decision
+height" is reached. After this height, if the last block is version 4, the
+migration decision is considered approved, and one day later (for testnet) the
+"snapshot height" is reached, after which no more blocks will be generated or
+accepted.
+
+If at the migration decision height the last block is still version 3, the
+migration will be canceled automatically. Nodes will revert to generating and
+accepting only version 3 blocks, indefinitely.
+
+The text of the Jelurida Public License under which the Nxt software is
+released has been updated to note that the current copyright holder is
+Jelurida Swiss SA, and that if the migration proceeds, the airdrop requirement
+will apply to the Nxt child chain tokens from then on.
+
+
+--------------------------------------------------------------------------------
 nxt-client-1.12.3, released 2022-03-25:
 
 This is a stable maintenance release with minor bugfixes only.

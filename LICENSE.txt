@@ -1,14 +1,15 @@
 Copyright © 2013-2016 The Nxt Core Developers.
-Copyright © 2016-2022 Jelurida IP B.V.
+Copyright © 2016-2023 Jelurida IP B.V.
+Copyright © 2023-2025 Jelurida Swiss SA
 
 This program is distributed under the terms of the Jelurida Public License
-version 1.2 for the Nxt Public Blockchain Platform.
+version 2.0 for the Nxt Public Blockchain Platform.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-Please contact Jelurida B.V. at info@jelurida.com for commercial licensing
+Please contact Jelurida Swiss SA at info@jelurida.com for commercial licensing
 options if the Jelurida Public License does not fit your private blockchain
 needs.
 
@@ -19,7 +20,7 @@ distributed under the MIT license, a copy of which is available under
 This software also uses third party code and libraries, distributed under
 licenses described in 3RD-PARTY-LICENSES.txt.
 
-Below is the full text of the Jelurida Public License version 1.1 for
+Below is the full text of the Jelurida Public License version 2.0 for
 the Nxt Public Blockchain Platform:
 
 
@@ -28,7 +29,7 @@ JELURIDA PUBLIC LICENSE
 Preamble:
 
 Being a company engaged predominantly in the creation of blockchain technology,
-Jelurida IP B.V. has prepared the following “coinleft” license whose goal is to
+Jelurida Swiss SA has prepared the following “coinleft” license whose goal is to
 implement new requirements consistent with the specific nature of the blockchain
 software. We recognize the fundamental advantages that the decentralized ledger
 technology has to offer and we truly believe in its potential to change the
@@ -88,7 +89,7 @@ Public License and any other license terms and conditions other than this JPL
 are explicitly excluded.
 
 
-JPL version: 1.2
+JPL version: 2.0
 
 
 Article 0. Definitions:
@@ -405,7 +406,7 @@ indirectly through you, then the only way you could satisfy both it and this
 License would be to refrain entirely from distribution of the Covered Work.
 
 
-Article 9. Jelurida IP B.V. may publish revised and/or new versions of the
+Article 9. Jelurida Swiss may publish revised and/or new versions of the
 Jelurida Public License from time to time. Such new versions will be similar in
 spirit to the present version, but may differ in detail to address new problems
 or concerns. To avoid ambiguity, everyone who wishes to use the text of the
@@ -472,7 +473,7 @@ of liability accompanies a copy of the Covered Work in return for a fee.
 II. Special Conditions
 
 Article 0. The Copyright Holder of the Nxt Reference Software (NRS) is Jelurida
-IP B.V.
+Swiss SA.
 
 
 Article 1. The airdrop requirement of Article 3.4.1 of the General Conditions,
@@ -480,7 +481,11 @@ as related to the Nxt Reference Software (NRS) is the following:
 
 1.1 The NXT holders from the original Nxt Public Blockchain Platform as
 maintained by Jelurida Swiss SA must be allocated at least 10% (ten percent) of
-the forging tokens in the new DLT Instance, proportional to their NXT holdings,
+the forging tokens in the new DLT Instance, proportional to their NXT holdings.
+However, if the NXT token has already been migrated to an Nxt child chain on the
+Ardor Public Blockchain Platform maintained by Jelurida Swiss SA, it is the
+holders of that child chain token that must receive the airdrop, proportional
+to their Nxt child chain token holdings.
 
 OR
 
@@ -552,17 +557,16 @@ You agree that you may not, for the purpose of interpretation of this License,
 refer to, or construe this License on the basis of, or use as counterevidence,
 any prior agreements, arrangements, understandings and statements, or other
 bilateral or public licenses, and to this extent agree (i) that this License
-qualifies as an agreed rule of evidence within the meaning of article 153 Dutch
-Code of Civil Proceedings and (ii) that this clause serves as a determination
-agreement within the meaning of article 7:900 Dutch Civil Code, and that this
-License shall be interpreted or construed by assuming the most obvious
-grammatical meaning of the wording of this License.
+qualifies as an agreed rule of evidence and (ii) that this clause serves as a
+determination agreement, and that this License shall be interpreted or
+construed by assuming the most obvious grammatical meaning of the wording of
+this License.
 
 
 Article 6. Governing law
 This License, the documents related to it and any agreement that incorporates
 any of these are governed by and shall be construed in accordance with the laws
-of the Netherlands. Any and all disputes arising out of or in connection with
+of Switzerland. Any and all disputes arising out of or in connection with
 this License, the documents related to it and any agreement that incorporates
-any of these shall be exclusively referred to the competent court in Amsterdam,
-the Netherlands.
+any of these shall be exclusively referred to the competent court in Lugano,
+Switzerland.

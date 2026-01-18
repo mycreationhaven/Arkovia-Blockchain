@@ -23,7 +23,6 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export JAVA_TOOL_OPTIONS="$JAVA_TOOL_OPTIONS -Dfile.encoding=UTF8"
 
 FILES="changelogs conf html lib resource contrib"
-FILES="${FILES} ${APPLICATION}.exe ${APPLICATION}service.exe"
 FILES="${FILES} 3RD-PARTY-LICENSES.txt AUTHORS.txt LICENSE.txt"
 FILES="${FILES} DEVELOPERS-GUIDE.md OPERATORS-GUIDE.md README.md README.txt USERS-GUIDE.md"
 FILES="${FILES} mint.bat mint.sh run.bat run.sh run-tor.sh run-desktop.sh start.sh stop.sh compact.sh compact.bat sign.sh sign.bat passphraseRecovery.sh passphraseRecovery.bat pem.to.pkcs12.keystore.certbot.hook.sh"
@@ -52,10 +51,9 @@ echo javadoc
 ./javadoc.sh
 fi
 echo copy resources
-cp installer/lib/JavaExe.exe ${APPLICATION}.exe
-cp installer/lib/JavaExe.exe ${APPLICATION}service.exe
 cp -a ${FILES} ${APPLICATION}
 cp -a logs/placeholder.txt ${APPLICATION}/logs
+
 echo gzip
 for f in `find ${APPLICATION}/html -name *.gz`
 do

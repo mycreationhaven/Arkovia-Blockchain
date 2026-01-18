@@ -1,0 +1,1 @@
+start .\jdk\bin\javaw -Dnxt.runtime.mode=desktop -Dnxt.redirect.system.out=true -Dnxt.redirect.system.err=true -jar nxt.jar

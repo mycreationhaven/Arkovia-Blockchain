@@ -31,8 +31,6 @@
 deploy.sh
 /resource/nxt.manifest.mf
 /resource/nxtservice.manifest.mf
-/nxt.exe
-/nxtservice.exe
 /bundles
 *.patch
 /addons/classes/

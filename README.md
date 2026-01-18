@@ -3,7 +3,7 @@
 
 This package is intended to allow easy creation of new blockchain projects
 based on Nxt, satisfying the requirements of the Jelurida Public License
-version 1.1 for the Nxt Public Blockchain Platform.
+version 2.0 for the Nxt Public Blockchain Platform.
 
 This is a starter kit for developers, not for end users. If you just install
 it and run it, you will get a blockchain with no tokens, no accounts, and no
@@ -19,16 +19,16 @@ The genesisAccounts.json file, and genesisAccounts-testnet.json for testnet,
 should contain the list of accounts to be created in the genesis block of the
 new blockchain, and their corresponding balances and public keys. The supplied
 genesisAccounts.json file is empty. To generate such a file containing both
-new user accounts, and the accounts of NXT holders from the Nxt public
-blockchain, you must use the JPLSnapshot utility from the Nxt Reference
-Software (NRS) v1.11.8 or later.
+new user accounts, and the accounts of NXT holders from the Nxt child chain of
+the Ardor blockchain, you must use the JPLSnapshot utility from the Ardor
+Software v2.6.0 or later.
 
 ----
-### Using the JPLSnapshot NRS add-on ###
+### Using the JPLSnapshot Ardor add-on ###
 
-Download and install the latest Nxt package from the Jelurida repository:
+Download and install the latest Ardor package from the Jelurida repository:
 
-https://bitbucket.org/Jelurida/nxt/downloads
+https://www.jelurida.com/ardor/downloads
 
 Enable the JPLSnapshot add-on in conf/nxt.properties by setting:
 
@@ -39,31 +39,38 @@ download the full blockchain.
 
 The add-on downloadJPLSnapshot API should be available under:
 
-http://localhost:7876/test?requestTag=ADDONS
+http://localhost:27876/test?requestTag=ADDONS
 
 
 Below is the documentation for how to use this API:
 
 ----
 The downloadJPLSnapshot API can be used to generate a genesis block JSON for a
-clone to satisfy the JPL 10% sharedrop requirement to existing NXT holders.
+clone to satisfy the JPL 10% sharedrop requirement to existing Nxt child chain
+token holders.
 
-This utility takes a snapshot of account balances and public keys on the Nxt
-blockchain as of the specified height, scales down the balance of each account
-proportionately so that the total of balances of sharedrop accounts is equal to
-10% of the total of all balances, and merges this data with the supplied new
-genesis accounts and balances.
+This utility takes a snapshot of account balances and public keys from the Nxt
+child chain of the Ardor blockchain as of the specified height, scales down the
+balance of each account proportionately so that the total of balances of
+sharedrop accounts is equal to 10% of the total of all balances, and merges
+this data with the supplied new genesis accounts and balances.
 
 Note that using a height more than 800 blocks in the past will normally require
 a blockchain rescan, which takes a few hours to complete. Do not interrupt this
 process.
+
+Make sure to set the isNxtSnapshot parameter to true, otherwise the snapshot will
+be generated based on Ignis instead of Nxt balances!
 
 Request parameters
 
     newGenesisAccounts - a JSON formatted file containing all new account
     public keys and balances to be included in the clone genesis block
     
-    height - the Nxt blockchain height at which to take the snapshot
+    height - the Ardor blockchain height at which to take the snapshot
+
+    isNxtSnapshot - boolean, must set to true to snapshot Nxt child chain
+    instead of Ignis (default is false)
 
 Response
 
@@ -81,7 +88,8 @@ recommended. Forging requires a public key, so the accounts that are going to
 forge the first blocks of the blockchain must have their public keys in the file.
 Here is an example input file, which allocates 300M each to the
 accounts with passwords "0", "1" and "2", for a total of 900M to new accounts,
-resulting in 100M automatically allocated to existing NXT holders:
+resulting in 100M automatically allocated to existing Nxt child chain token
+holders:
 
 ```
 {

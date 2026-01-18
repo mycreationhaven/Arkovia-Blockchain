@@ -149,9 +149,7 @@
         <pack name="server.windows" os="windows" required="yes">
             <description>Windows Specific Resources</description>
             <os family="windows"/>
-            <file src="nxt.exe" targetdir="${INSTALL_PATH}" override="true"/>
-            <file src="nxtservice.exe" targetdir="${INSTALL_PATH}" override="true"/>
-            <file src="nxtservice.jar" targetdir="${INSTALL_PATH}" override="true"/>
+			<file src="nxt.cmd" targetdir="${INSTALL_PATH}" override="true"/>
             <file src="run.bat" targetdir="${INSTALL_PATH}" override="true"/>
             <file src="mint.bat" targetdir="${INSTALL_PATH}" override="true"/>
             <file src="compact.bat" targetdir="${INSTALL_PATH}" override="true"/>
@@ -159,8 +157,6 @@
             <file src="sign.bat" targetdir="${INSTALL_PATH}" override="true"/>
             <file src="passphraseRecovery.bat" targetdir="${INSTALL_PATH}" override="true"/>
             <parsable targetfile="${INSTALL_PATH}/run.bat"/>
-            <singlefile src="resource/nxt.properties" target="${INSTALL_PATH}/resource/nxt.properties" override="true"/>
-            <singlefile src="resource/nxtservice.properties" target="${INSTALL_PATH}/resource/nxtservice.properties" override="true"/>
         </pack>
 
         <pack name="server.unix" os="unix" required="yes">

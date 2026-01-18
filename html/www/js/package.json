@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://bitbucket.org/Jelurida/nxt.git"
+    "url": "git+https://git.jelurida.com/git/nxt"
   },
   "keywords": [
     "blockchain",
@@ -20,7 +20,7 @@
   ],
   "author": "Jelurida",
   "license": "MIT",
-  "homepage": "https://bitbucket.org/Jelurida/nxt#readme",
+  "homepage": "https://nxtdocs.jelurida.com/Node_JS_module",
   "dependencies": {
     "async": "^2.1.4",
     "crypto-js": "^3.1.9-1",
