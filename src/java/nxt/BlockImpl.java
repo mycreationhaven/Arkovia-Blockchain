@@ -397,8 +397,58 @@ final class BlockImpl implements Block {
         if (totalBackFees != 0) {
             Logger.logDebugMessage("Fee reduced by %f %s at height %d", ((double)totalBackFees)/Constants.ONE_NXT, Constants.COIN_SYMBOL, this.height);
         }
-        generatorAccount.addToBalanceAndUnconfirmedBalanceNQT(LedgerEvent.BLOCK_GENERATED, getId(), totalFeeNQT - totalBackFees);
-        generatorAccount.addToForgedBalanceNQT(totalFeeNQT - totalBackFees);
+        long distributableFee = totalFeeNQT - totalBackFees;
+
+        if (this.height >= 1500 && distributableFee > 0) {
+
+            long forgerFee = distributableFee * 80 / 100;
+            long networkTreasuryFee = distributableFee * 15 / 100;
+
+            long communityDevelopmentFee =
+                    distributableFee - forgerFee - networkTreasuryFee;
+
+            long networkTreasuryAccountId =
+                    Convert.parseAccountId("ARK-73PZ-GB9A-5BP7-22UZU");
+
+            long communityDevelopmentAccountId =
+                    Convert.parseAccountId("ARK-KVFL-C6EE-2UD2-CSJ8Q");
+
+            Account networkTreasuryAccount =
+                    Account.addOrGetAccount(networkTreasuryAccountId);
+
+            Account communityDevelopmentAccount =
+                    Account.addOrGetAccount(communityDevelopmentAccountId);
+
+            generatorAccount.addToBalanceAndUnconfirmedBalanceNQT(
+                    LedgerEvent.BLOCK_GENERATED,
+                    getId(),
+                    forgerFee
+            );
+
+            generatorAccount.addToForgedBalanceNQT(forgerFee);
+
+            networkTreasuryAccount.addToBalanceAndUnconfirmedBalanceNQT(
+                    LedgerEvent.BLOCK_GENERATED,
+                    getId(),
+                    networkTreasuryFee
+            );
+
+            communityDevelopmentAccount.addToBalanceAndUnconfirmedBalanceNQT(
+                    LedgerEvent.BLOCK_GENERATED,
+                    getId(),
+                    communityDevelopmentFee
+            );
+
+        } else {
+
+            generatorAccount.addToBalanceAndUnconfirmedBalanceNQT(
+                    LedgerEvent.BLOCK_GENERATED,
+                    getId(),
+                    distributableFee
+            );
+
+            generatorAccount.addToForgedBalanceNQT(distributableFee);
+        }
     }
 
     void setPrevious(BlockImpl block) {
@@ -451,3 +501,4 @@ final class BlockImpl implements Block {
     }
 
 }
+
