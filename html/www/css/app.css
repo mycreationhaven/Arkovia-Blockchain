@@ -39,7 +39,7 @@
 html,
 body {
   overflow-x:hidden;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
   background: #f9f9f9;
@@ -2388,7 +2388,7 @@ a.list-group-item:hover {
     margin: 0 auto;
     padding: 0;
     font-size: 14px;
-    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
     color: #000;
     padding-left: 20px;
     padding-right: 20px;
