@@ -1,0 +1,20 @@
+# Arkovia Network local configuration
+
+# Arkovia mainnet peer port
+nxt.peerServerPort=4874
+
+# Arkovia local API / wallet
+nxt.apiServerPort=4876
+nxt.apiServerSSLPort=4877
+
+# Keep API private on this Windows development machine
+nxt.apiServerHost=127.0.0.1
+
+# Enable peer networking
+nxt.shareMyAddress=false
+
+# Arkovia mainnet
+nxt.isTestnet=false
+
+#Arkovia Well Known Peers
+nxt.wellKnownPeers=192.168.1.179:4874
