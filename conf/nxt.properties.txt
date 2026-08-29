@@ -1,20 +1,58 @@
-# Arkovia Network local configuration
+# ============================================================
+# Arkovia Network - Mainnet Node Configuration
+# ============================================================
 
-# Arkovia mainnet peer port
+# Mainnet
+nxt.isTestnet=false
+
+# ------------------------------------------------------------
+# Peer-to-Peer Network
+# ------------------------------------------------------------
+
+# Arkovia peer port
 nxt.peerServerPort=4874
 
-# Arkovia local API / wallet
+# Allow this node to advertise itself to other Arkovia nodes
+nxt.shareMyAddress=true
+
+# Each public node should set its own public IP address
+
+# in its LOCAL conf/nxt.properties file.
+#
+# Example:
+
+# nxt.myAddress=YOUR_PUBLIC_IP:4874
+
+
+# Initial Arkovia peers
+nxt.wellKnownPeers=147.93.138.255:4874;217.216.64.226:4874
+
+# Peer discovery/database
+nxt.usePeersDb=true
+nxt.savePeers=true
+nxt.getMorePeers=true
+
+# ------------------------------------------------------------
+# API / Wallet
+# ------------------------------------------------------------
+
+nxt.enableAPIServer=true
 nxt.apiServerPort=4876
 nxt.apiServerSSLPort=4877
 
-# Keep API private on this Windows development machine
+# SECURITY:
+# Keep the API bound to localhost.
+# Do not expose port 4876 directly to the Internet.
 nxt.apiServerHost=127.0.0.1
 
-# Enable peer networking
-nxt.shareMyAddress=false
+# ------------------------------------------------------------
+# Database
+# ------------------------------------------------------------
 
-# Arkovia mainnet
-nxt.isTestnet=false
+nxt.dbDir=./nxt_db/nxt
 
-#Arkovia Well Known Peers
-nxt.wellKnownPeers=192.168.1.179:4874
+# ------------------------------------------------------------
+# Prunable Data
+# ------------------------------------------------------------
+
+nxt.includeExpiredPrunable=true
