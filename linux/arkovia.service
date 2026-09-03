@@ -1,0 +1,36 @@
+[Unit]
+Description=Arkovia Blockchain Full Node
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=3
+
+[Service]
+Type=simple
+User=arkovia
+Group=arkovia
+WorkingDirectory=/var/lib/arkovia
+ExecStart=/opt/arkovia/linux/start-node.sh /etc/arkovia/nxt.properties
+Environment=ARKOVIA_HEAP_MB=2048
+Restart=on-failure
+RestartSec=15
+TimeoutStopSec=300
+KillSignal=SIGTERM
+SuccessExitStatus=143
+UMask=0077
+StateDirectory=arkovia
+StateDirectoryMode=0700
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/arkovia
+RestrictSUIDSGID=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+CapabilityBoundingSet=
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
