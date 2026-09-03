@@ -1,0 +1,27 @@
+# Arkovia mainnet full node. Keep upstream genesis and consensus unchanged.
+nxt.isTestnet=false
+nxt.isLightClient=false
+nxt.isOffline=false
+nxt.enableAPIProxy=false
+nxt.shareMyAddress=true
+nxt.peerServerHost=0.0.0.0
+nxt.peerServerPort=47874
+nxt.enablePeerUPnP=false
+# REQUIRED: existing Arkovia peer host:port, separated by semicolons.
+nxt.wellKnownPeers=REPLACE_WITH_EXISTING_ARKOVIA_PEER:47874
+# Optional: this server's externally reachable host:port.
+nxt.myAddress=
+nxt.usePeersDb=true
+nxt.savePeers=true
+nxt.enableAPIServer=true
+nxt.apiServerHost=127.0.0.1
+nxt.apiServerPort=7876
+nxt.allowedBotHosts=127.0.0.1; localhost; [0:0:0:0:0:0:0:1];
+nxt.enableAPIServerSSL=false
+nxt.disableAdminPassword=false
+# Set a random admin password before running; installer generates one.
+nxt.adminPassword=REPLACE_WITH_RANDOM_ADMIN_PASSWORD
+nxt.launchDesktopApplication=false
+nxt.dbDir=./nxt_db/nxt
+nxt.apiResourceBase=/opt/arkovia/html/www
+nxt.javadocResourceBase=/opt/arkovia/html/doc

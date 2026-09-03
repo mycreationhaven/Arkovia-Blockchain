@@ -1,3 +1,11 @@
+# Arkovia Blockchain
+
+For a headless Linux mainnet full node, see [Linux installation and build instructions](linux/README.md).
+The Linux package preserves the Arkovia genesis and consensus code and includes
+a systemd service. An existing Arkovia peer address is required to synchronize.
+
+The original upstream creation-kit documentation follows for reference.
+
 ----
 # Nxt Blockchain Creation Kit #
 
@@ -119,4 +127,3 @@ nxt/peer/Peer.java, defining default peers in nxt-default.properties, changing
 the coin name and software name in nxt/Nxt.java, customizing the UI, etc.
 Such customization work should be done by a competent developer, and is beyond
 the scope of this document.
-
