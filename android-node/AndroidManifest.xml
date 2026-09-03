@@ -1,0 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.arkovia.node.android" android:versionCode="1" android:versionName="0.1.0-test">
+<uses-sdk android:minSdkVersion="28" android:targetSdkVersion="35"/>
+<uses-permission android:name="android.permission.INTERNET"/><uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/><uses-permission android:name="android.permission.WAKE_LOCK"/><uses-permission android:name="android.permission.POST_NOTIFICATIONS"/><uses-permission android:name="android.permission.FOREGROUND_SERVICE"/><uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
+<application android:label="Arkovia Node (Test)" android:icon="@drawable/ic_node" android:theme="@style/AppTheme" android:allowBackup="false" android:extractNativeLibs="true" android:supportsRtl="true" android:usesCleartextTraffic="false">
+<activity android:name="org.arkovia.android.MainActivity" android:exported="true"><intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter></activity>
+<service android:name="org.arkovia.android.NodeService" android:exported="false" android:stopWithTask="false" android:foregroundServiceType="specialUse"><property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-started local blockchain full-node verification and peer participation with persistent status and an explicit stop control."/></service>
+</application></manifest>

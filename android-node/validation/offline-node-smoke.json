@@ -1,0 +1,30 @@
+[
+  {
+    "attempt": 1,
+    "startup": {
+      "feederHeight": 0,
+      "downloading": false,
+      "scanning": false,
+      "peers": 0,
+      "state": "running",
+      "updatedAt": 1788445871115,
+      "height": 0
+    },
+    "exitCode": 0,
+    "finalState": "stopped"
+  },
+  {
+    "attempt": 2,
+    "startup": {
+      "feederHeight": 0,
+      "downloading": false,
+      "scanning": false,
+      "peers": 0,
+      "state": "running",
+      "updatedAt": 1788445881231,
+      "height": 0
+    },
+    "exitCode": 0,
+    "finalState": "stopped"
+  }
+]
