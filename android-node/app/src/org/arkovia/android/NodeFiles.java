@@ -55,6 +55,7 @@ final class NodeFiles {
   p.setProperty("nxt.peerServerPort","4874");p.setProperty("nxt.shareMyAddress","false");
   p.setProperty("nxt.enableAPIServer","false");p.setProperty("nxt.enableAPIProxy","false");
   p.setProperty("nxt.enablePeerServerUPnP","false");p.setProperty("nxt.enableAPIUPnP","false");
+  p.setProperty("nxt.disableGenerateBlocksThread","true");
   p.setProperty("nxt.launchDesktopApplication","false");p.setProperty("nxt.addOns","");
   p.setProperty("nxt.maxNumberOfOutboundConnections","8");p.setProperty("nxt.maxNumberOfConnectedPublicPeers","8");
   p.setProperty("nxt.dbCacheKB","32768");p.setProperty("nxt.dbMaxMemoryRows","10000");

@@ -71,7 +71,7 @@ unsigned=b/'unsigned.apk'
 run([bt/'aapt2','link','-o',unsigned,'-I',sdk/'platforms/android-35/android.jar','--manifest',base/'AndroidManifest.xml','--java',generated,'-A',assets,reszip])
 appclasses=b/'app-classes';shutil.rmtree(appclasses,ignore_errors=True);appclasses.mkdir()
 appsources=sorted((base/'app/src').rglob('*.java'))+sorted(generated.rglob('*.java'))
-run([jdk/'bin/javac','-source','8','-target','8','-encoding','UTF-8','-bootclasspath',sdk/'platforms/android-35/android.jar','-d',appclasses,*appsources])
+run([jdk/'bin/javac','-source','8','-target','8','-encoding','UTF-8','-bootclasspath',str(sdk/'platforms/android-35/android.jar')+os.pathsep+str(bt/'core-lambda-stubs.jar'),'-d',appclasses,*appsources])
 appjar=b/'app.jar';run([jdk/'bin/jar','--create','--file',appjar,'-C',appclasses,'.'])
 dex=b/'dex';dex.mkdir(exist_ok=True)
 run([bt/'d8','--min-api','28','--lib',sdk/'platforms/android-35/android.jar','--output',dex,appjar])
@@ -84,4 +84,6 @@ if not key.exists():run([jdk/'bin/keytool','-genkeypair','-keystore',key,'-store
 apk=b/f'Arkovia-Node-0.1.0-test-{a.abi}.apk'
 run([bt/'apksigner','sign','--ks',key,'--ks-key-alias','arkovia-test','--ks-pass','pass:android','--key-pass','pass:android','--out',apk,aligned])
 run([bt/'apksigner','verify','--verbose',apk]);run([bt/'zipalign','-c','4',apk])
-print('APK:',apk);print('SHA256:',sha(apk))
+with zipfile.ZipFile(apk) as z:
+ assert z.testzip() is None, 'APK CRC validation failed'
+print('APK:',apk);print('BYTES:',apk.stat().st_size);print('SHA256:',sha(apk))
