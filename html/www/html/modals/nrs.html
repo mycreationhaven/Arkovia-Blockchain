@@ -436,6 +436,7 @@
                 <ul class="nav nav-pills nav-justified" style="margin-bottom:10px">
                     <li class="active" id="generate_token_nav" data-tab="generate_token"><a href="#" data-i18n="generate_token">Generate Token</a></li>
                     <li data-tab="validate_token"><a href="#" data-i18n="validate_token">Validate Token</a></li>
+                    <li id="sign_message_nav" data-tab="sign_message"><a href="#">Sign Message</a></li>
                 </ul>
 
                 <div id="token_modal_generate_token" class="token_modal_content" style="display:none">
@@ -467,11 +468,36 @@
                         </div>
                     </form>
                 </div>
+
+                <div id="token_modal_sign_message" class="token_modal_content" style="display:none">
+                    <form role="form" id="sign_message_form" autocomplete="off">
+                        <div class="callout callout-danger" id="sign_message_error" style="display:none"></div>
+                        <div class="callout callout-info" id="hubzam_signer_context" style="display:none">
+                            <strong>Hubzam Works secure signing</strong>
+                            <div id="hubzam_signer_status" style="margin-top:4px">Waiting for a secure request…</div>
+                            <div id="hubzam_signer_origin" style="font-size:11px;margin-top:4px;word-break:break-all"></div>
+                        </div>
+                        <div class="callout callout-warning" style="margin-bottom:10px">
+                            Signing a message proves control of this wallet. It does not send ARKOS or authorize a payment.
+                        </div>
+                        <div class="form-group">
+                            <label for="sign_message_data">MESSAGE TO SIGN</label>
+                            <textarea class="form-control" name="message" id="sign_message_data" placeholder="Paste the exact message to sign" tabindex="1" rows="7"></textarea>
+                        </div>
+                        <div data-replace-with-modal-template="secret_phrase_modal_template"></div>
+                        <div class="form-group" id="sign_message_output_group" style="display:none">
+                            <label for="sign_message_output">SIGNATURE</label>
+                            <textarea readonly class="form-control" id="sign_message_output" rows="3" style="font-family:monospace;word-break:break-all"></textarea>
+                            <p class="help-block">128-character hexadecimal signature. Safe to share with the service that requested this exact message.</p>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="modal-footer" style="margin-top:0;">
                 <button type="button" class="btn btn-default" data-dismiss="modal" data-i18n="cancel">Cancel</button>
                 <button type="button" class="btn btn-primary" data-ignore="true" data-form="generate_token_form" id="generate_token_button" data-i18n="generate">Generate</button>
                 <button type="button" class="btn btn-primary" data-form="validate_token_form" id="validate_token_button" data-i18n="validate">Validate</button>
+                <button type="button" class="btn btn-primary" data-ignore="true" data-form="sign_message_form" id="sign_message_button" style="display:none">Sign Message</button>
             </div>
         </div>
     </div>

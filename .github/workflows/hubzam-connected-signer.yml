@@ -1,0 +1,31 @@
+name: Hubzam Connected Signer
+
+on:
+  push:
+    branches:
+      - feature/hubzam-connected-message-signing
+    paths:
+      - 'html/www/js/nrs.modals.token.js'
+      - 'html/www/html/modals/nrs.html'
+      - 'html/www/html/header.html'
+      - 'scripts/validate-hubzam-connected-signer.mjs'
+      - '.github/workflows/hubzam-connected-signer.yml'
+  pull_request:
+    paths:
+      - 'html/www/js/nrs.modals.token.js'
+      - 'html/www/html/modals/nrs.html'
+      - 'html/www/html/header.html'
+      - 'scripts/validate-hubzam-connected-signer.mjs'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax check signer
+        run: node --check html/www/js/nrs.modals.token.js
+      - name: Validate connected signer boundaries
+        run: node scripts/validate-hubzam-connected-signer.mjs
