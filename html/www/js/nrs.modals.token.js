@@ -241,7 +241,9 @@ var NRS = (function(NRS, $) {
     }
 
     tokenModal.on("show.bs.modal", function(e) {
-        $("#generate_token_output, #decode_token_output, #generate_token_output_qr_code, #sign_message_output_group").html("").hide();
+        $("#generate_token_output, #decode_token_output, #generate_token_output_qr_code").html("").hide();
+        $("#sign_message_output").val("");
+        $("#sign_message_output_group").hide();
         clearSignerError();
 
         var $invoker = $(e.relatedTarget);
@@ -425,6 +427,9 @@ var NRS = (function(NRS, $) {
         var challenge = String(data.challenge || "");
         if (!validateHubzamChallenge(challenge)) {
             signerError("Hubzam sent an invalid or expired login challenge. Return to Hubzam and try again.");
+            postHubzamMessage("ARKOVIA_HUBZAM_ERROR", {
+                message: "The Hubzam login challenge was invalid or expired."
+            });
             setSignButtonState("Challenge Rejected", true);
             return;
         }
