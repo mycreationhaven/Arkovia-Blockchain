@@ -52,3 +52,28 @@
   - ask us, the dev team
 
 ----
+
+----
+## Message Signing ##
+
+Arkovia Wallet can sign plain-text messages without sending a blockchain transaction.
+
+- Open the wallet Settings/Tools menu and choose **Sign Message**.
+- Review the exact message before signing.
+- Enter your wallet passphrase only inside the Arkovia Wallet.
+- The result is a 128-character hexadecimal signature that proves the wallet signed that exact message.
+- Signing a message does **not** send ARKOS and does **not** authorize a payment by itself.
+
+### Hubzam Works connected signing ###
+
+When Hubzam Works requests an Arkovia login signature, Hubzam opens a small Arkovia-controlled signer window. The wallet returns only the public key and message signature. Your passphrase and private key remain inside the local Arkovia Wallet and are never sent to Hubzam.
+
+The normal Hubzam flow is:
+
+1. Choose **Sign Message with Arkovia** in Hubzam.
+2. Unlock the local Arkovia Wallet if needed.
+3. Review the one-time `HUBZAM_ARKOVIA_LOGIN_V1` message.
+4. Choose **Approve & Sign**.
+5. The signature is returned to Hubzam automatically for verification.
+
+The manual copy/paste signature method remains available as a fallback.
