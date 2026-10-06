@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#161c2d" />
+  <meta name="description" content="Arkovia Signer securely signs Hubzam Works identity challenges without exposing wallet secrets." />
+  <meta name="referrer" content="no-referrer" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>Arkovia Signer</title>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <img src="./icons/icon-192.png" alt="" class="brand-icon" />
+        <div>
+          <h1>Arkovia Signer</h1>
+          <p>Private-key signing stays on this device.</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span id="networkBadge" class="badge muted">Network optional</span>
+        <button id="installButton" class="button ghost" type="button" hidden>Install App</button>
+      </div>
+    </header>
+
+    <section id="connectedBanner" class="panel connected" hidden>
+      <div>
+        <p class="eyebrow">Secure request</p>
+        <h2>Hubzam Works is requesting proof of identity</h2>
+        <p id="connectedOrigin" class="small"></p>
+      </div>
+      <span class="badge secure">Arkovia-controlled signer</span>
+    </section>
+
+    <section id="statusPanel" class="panel status-panel">
+      <div>
+        <p class="eyebrow">Signer status</p>
+        <h2 id="statusTitle">Ready to set up</h2>
+        <p id="statusText" class="small">Create or import a wallet vault to begin.</p>
+      </div>
+      <button id="lockButton" class="button ghost" type="button" hidden>Lock</button>
+    </section>
+
+    <section id="walletListPanel" class="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Wallets on this device</p>
+          <h2>Select an identity</h2>
+        </div>
+        <button id="addWalletButton" class="button secondary" type="button">Add Wallet</button>
+      </div>
+      <div id="walletList" class="wallet-list"></div>
+      <div id="emptyWallets" class="empty-state">
+        <p>No wallet vaults are stored on this device yet.</p>
+        <p class="small">Wallet secrets are stored only as AES-GCM encrypted data.</p>
+      </div>
+    </section>
+
+    <section id="unlockPanel" class="panel" hidden>
+      <p class="eyebrow">Unlock wallet</p>
+      <h2 id="unlockWalletLabel">Unlock</h2>
+      <div class="form-row">
+        <label for="unlockPassword">Signer password</label>
+        <input id="unlockPassword" type="password" autocomplete="current-password" />
+      </div>
+      <div class="actions">
+        <button id="unlockButton" class="button primary" type="button">Unlock</button>
+        <button id="cancelUnlockButton" class="button ghost" type="button">Cancel</button>
+      </div>
+    </section>
+
+    <section id="addWalletPanel" class="panel" hidden>
+      <p class="eyebrow">Encrypted local vault</p>
+      <h2>Add Arkovia Wallet</h2>
+      <p class="small">Your Arkovia secret phrase is encrypted locally before storage and is never sent to Hubzam Works or Node 1.</p>
+      <div class="form-row">
+        <label for="walletLabel">Wallet label</label>
+        <input id="walletLabel" type="text" maxlength="64" placeholder="e.g. Sarah - Front Register" autocomplete="off" />
+      </div>
+      <div class="form-row">
+        <label for="walletSecret">Arkovia secret phrase</label>
+        <textarea id="walletSecret" rows="4" autocomplete="off" spellcheck="false" placeholder="Enter only inside Arkovia Signer"></textarea>
+      </div>
+      <div class="form-row">
+        <label for="vaultPassword">Signer password</label>
+        <input id="vaultPassword" type="password" minlength="8" autocomplete="new-password" />
+        <p class="hint">Use at least 8 characters. This encrypts the wallet vault on this device.</p>
+      </div>
+      <div class="form-row">
+        <label for="vaultPasswordConfirm">Confirm signer password</label>
+        <input id="vaultPasswordConfirm" type="password" minlength="8" autocomplete="new-password" />
+      </div>
+      <div class="actions">
+        <button id="saveWalletButton" class="button primary" type="button">Encrypt & Save Wallet</button>
+        <button id="cancelAddWalletButton" class="button ghost" type="button">Cancel</button>
+      </div>
+    </section>
+
+    <section id="requestPanel" class="panel request-panel" hidden>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Review before signing</p>
+          <h2 id="requestTitle">Hubzam identity request</h2>
+        </div>
+        <span id="requestPurposeBadge" class="badge secure">Identity only</span>
+      </div>
+      <dl id="requestDetails" class="request-details"></dl>
+      <details>
+        <summary>View exact message</summary>
+        <pre id="requestMessage" class="message-box"></pre>
+      </details>
+      <div class="warning">
+        This signature proves control of your Arkovia wallet. It does not send ARKOS and does not authorize a payment.
+      </div>
+      <div class="actions">
+        <button id="approveButton" class="button primary" type="button">Approve & Sign</button>
+        <button id="rejectButton" class="button ghost" type="button">Reject</button>
+      </div>
+    </section>
+
+    <section id="manualPanel" class="panel">
+      <p class="eyebrow">Standalone tool</p>
+      <h2>Sign a Message</h2>
+      <p class="small">Use this only when you intentionally need a raw Arkovia signature. Hubzam connected requests are handled automatically above.</p>
+      <div class="form-row">
+        <label for="manualMessage">Message</label>
+        <textarea id="manualMessage" rows="5" spellcheck="false"></textarea>
+      </div>
+      <div class="actions">
+        <button id="manualSignButton" class="button secondary" type="button" disabled>Sign Message</button>
+      </div>
+      <div id="manualOutputWrap" class="form-row" hidden>
+        <label for="manualSignature">Signature</label>
+        <textarea id="manualSignature" rows="3" readonly spellcheck="false"></textarea>
+        <button id="copySignatureButton" class="button ghost" type="button">Copy Signature</button>
+      </div>
+    </section>
+
+    <section class="panel trusted-panel">
+      <p class="eyebrow">Trusted application</p>
+      <h2>Hubzam Works</h2>
+      <p class="small">Connected signing accepts requests only from approved Hubzam Works origins and localhost development environments. Request IDs and browser origins are checked before any challenge is shown.</p>
+    </section>
+
+    <footer>
+      <p>Arkovia Signer works offline after installation and caching. Node 1 is used for distribution and network status—not as a requirement for local signing.</p>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  </main>
+
+  <script src="../js/crypto/curve25519.js"></script>
+  <script src="../js/crypto/curve25519_.js"></script>
+  <script src="./crypto.js"></script>
+  <script src="./vault.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
